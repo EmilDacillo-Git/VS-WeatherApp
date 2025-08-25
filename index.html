@@ -1,11 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-<script defer src="main.js"></script></head>
-<body>
-    
-</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/sf-pro-display"
+      rel="stylesheet"
+    />
+  <script defer src="main.js"></script></head>
+  <body>
+    <div class="container" id="contaner-panel">
+      <form id="locationForm">
+        <input
+          class="input"
+          type="text"
+          id="location"
+          placeholder="Enter location"
+          required
+          maxlength="100"
+        />
+        <button id="search-location" class="add-btn" type="submit">
+          <span class="mdi mdi-magnify"></span>
+        </button>
+      </form>
+      <div id="hero-page">
+        <img
+          src="c261d230642fb5746694.png"
+          alt="hero-icon"
+        />
+        <h1>Get Started!</h1>
+      </div>
+      <div id="weather-content">
+        <div id="temp-sect">
+          <section id="weather-loc">
+            <img src="8d0dbecf8e6c5a3bb398.png" alt="gps" />
+            <p></p>
+          </section>
+          <section id="weather-icon">
+            <img
+              src="50a4185094331a63ba3a.png"
+              alt="SUNNY CLOUD"
+            />
+          </section>
+          <section id="weather-temp"></section>
+        </div>
+        <div id="weather-data">
+          <section id="percipitation-sect">
+            <img
+              src="be117db660068b7bd332.png"
+              alt="PRECIPITATION"
+            />
+            <h3></h3>
+            <p>Precipitation</p>
+          </section>
+          <section id="wind-sect">
+            <img
+              src="556e2a49e15629bfb70b.png"
+              alt="PRECIPITATION"
+            />
+            <h3></h3>
+            <p>Wind</p>
+          </section>
+          <section id="humidity-sect">
+            <img
+              src="952060a666ebdf29eca1.png"
+              alt="PRECIPITATION"
+            />
+            <h3></h3>
+            <p>Humidity</p>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div id="loading-page" style="display: none">
+      <div class="spinner"></div>
+    </div>
+    <div id="error-modal">
+      <div id="error-page">
+        <section id="exit-button">
+          <button id="ext-btn">
+            <span class="mdi mdi-close-circle"></span>
+          </button>
+        </section>
+        <section id="err-message">
+          <img src="1e1a3352cd7defe8aec0.png" alt="Umbrella" />
+          <h4>
+            Looks like that location isn’t available.<br />
+            Please check the spelling and try again.
+          </h4>
+        </section>
+      </div>
+    </div>
+  </body>
 </html>
