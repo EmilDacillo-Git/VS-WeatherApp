@@ -1,23 +1,53 @@
-import weatherDatas from "./displayData.js";
+import showErrorPage from "./errorAction.js";
 import "./styles.css";
-//  Key: UHW5LXTHFPBQ3AJ5QPDV56PLF
 
-const locationInput = document.getElementById('location');
-const heroPage = document.getElementById('hero-page');
-const searchBtn = document.getElementById('search-location');
-const form = document.getElementById('locationForm');
-const weatherDisplay = document.getElementById('weather-content');
+const locationInput = document.getElementById("location");
+const heroPage = document.getElementById("hero-page");
+const loadingPage = document.getElementById("loading-page");
 
-form.addEventListener('submit', (e) => {
+const form = document.getElementById("locationForm");
+const tempSect = document.getElementById("weather-temp");
+const weatherContaienr = document.getElementById("weather-content");
+const exitBtn = document.getElementById('ext-btn');
+
+function clearField() {
+  tempSect.innerHTML = "";
+}
+
+async function loadWeatherData(location) {
+  const WeatherDataModule = await import("./displayData.js");
+  return WeatherDataModule.default(location);
+}
+
+async function loadLocation(location) {
+  const locationModule = await import("./location.js");
+  return locationModule.default(location);
+}
+
+heroPage.style.display = "flex";
+
+form.addEventListener("submit", async (e) => {
+  try {
     e.preventDefault();
     const location = locationInput.value.trim();
 
     if (location) {
-        weatherDisplay.innerHTML = "";
-        heroPage.style.display = 'none';
-        weatherDatas(location);
+      clearField();
+
+      heroPage.style.display = "none";
+      weatherContaienr.style.display = "none";
+      loadingPage.style.display = "flex";
+
+      await loadWeatherData(location);
+      await loadLocation(location);
+      loadingPage.style.display = "none";
+      weatherContaienr.style.display = "block";
     }
-    
+  } catch (err) {
+    showErrorPage();
+  }
 });
 
-
+exitBtn.addEventListener('click', () => {
+    location.reload();
+});

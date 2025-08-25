@@ -20,7 +20,7 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="contaner-panel">
       <form id="locationForm">
         <input
           class="input"
@@ -36,12 +36,71 @@
       </form>
       <div id="hero-page">
         <img
-          src="./assets/—Pngtree—3d sun and cloud illustration_20135285.png"
+          src="./assets/—Pngtree—umbrella 3d illustration_13017263.png"
           alt="hero-icon"
         />
         <h1>Get Started!</h1>
       </div>
-      <div id="weather-content"></div>
+      <div id="weather-content">
+        <div id="temp-sect">
+          <section id="weather-loc">
+            <img src="./assets/gps.png" alt="gps" />
+            <p></p>
+          </section>
+          <section id="weather-icon">
+            <img
+              src="./assets/—Pngtree—3d sun and cloud illustration_20135285.png"
+              alt="SUNNY CLOUD"
+            />
+          </section>
+          <section id="weather-temp"></section>
+        </div>
+        <div id="weather-data">
+          <section id="percipitation-sect">
+            <img
+              src="./assets/Big/Sun cloud angled rain.png"
+              alt="PRECIPITATION"
+            />
+            <h3></h3>
+            <p>Precipitation</p>
+          </section>
+          <section id="wind-sect">
+            <img
+              src="./assets/Big/Moon cloud fast wind.png"
+              alt="PRECIPITATION"
+            />
+            <h3></h3>
+            <p>Wind</p>
+          </section>
+          <section id="humidity-sect">
+            <img
+              src="./assets/Big/Sun cloud mid rain.png"
+              alt="PRECIPITATION"
+            />
+            <h3></h3>
+            <p>Humidity</p>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div id="loading-page" style="display: none">
+      <div class="spinner"></div>
+    </div>
+    <div id="error-modal">
+      <div id="error-page">
+        <section id="exit-button">
+          <button id="ext-btn">
+            <span class="mdi mdi-close-circle"></span>
+          </button>
+        </section>
+        <section id="err-message">
+          <img src="./assets/insurance.png" alt="Umbrella" />
+          <h4>
+            Looks like that location isn’t available.<br />
+            Please check the spelling and try again.
+          </h4>
+        </section>
+      </div>
     </div>
   </body>
 </html>

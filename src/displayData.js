@@ -1,30 +1,33 @@
+import showErrorPage from "./errorAction.js";
 import getData from "./weatherData.js";
-import sunIcon from "./assets/sun.png";
 
-const weatherPage = document.getElementById("weather-content");
+const tempSection = document.getElementById("weather-temp");
+const precipitationVal = document.querySelector("#percipitation-sect h3");
+const windSpeedVal = document.querySelector("#wind-sect h3");
+const humidityVal = document.querySelector("#humidity-sect h3");
 
 export default async function weatherDatas(location) {
-  const fetchedData = await getData(location);
-  const currentTemp = fetchedData.currentConditions.temp;
+  try {
+    const fetchedData = await getData(location);
+    const currentTemp = fetchedData.currentConditions.temp;
+    const precipitation = fetchedData.days[0].precip;
+    const windSpeed = fetchedData.currentConditions.windspeed;
+    const humidity = fetchedData.currentConditions.humidity;
 
-  const tempToday = document.createElement("h1");
-  const tempIcon = document.createElement('img');
-  tempIcon.src = sunIcon; 
-  tempIcon.alt = "Weather Icon";
-  tempIcon.classList.add('temp-icon')
-  
-  tempToday.classList.add("temp-today");
-  tempToday.append(currentTemp);
-  weatherPage.append(tempIcon,tempToday);
+    tempSection.innerHTML = "";
+    const tempToday = document.createElement("h1");
+    tempToday.innerHTML = `${currentTemp} °C`;
+    tempSection.append(tempToday);
 
-  // console.log(currentTemp);
+    const sections = document.querySelectorAll(".precipitation h3");
+    sections.forEach((section) => {
+      section.innerHTML = "";
+    });
 
-  // const curretnPrecipitation = fetchedData.days[0].precip;
-  // console.log(curretnPrecipitation);
-
-  // const currentWind = fetchedData.currentConditions.windspeed;
-  // console.log(currentWind);
-
-  // const currentHumidity = fetchedData.currentConditions.humidity;
-  // console.log(currentHumidity);
+    precipitationVal.textContent = `${precipitation} %`;
+    windSpeedVal.textContent = `${windSpeed} km/h`;
+    humidityVal.textContent = `${humidity} %`;
+  } catch (err) {
+    showErrorPage();
+  }
 }
